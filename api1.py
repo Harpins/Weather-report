@@ -5,14 +5,11 @@ def main():
     locations = ['Лондон',
                  'аэропорт Шереметьево',
                  'Череповец',]
-    options = '3nqT'
-    units = 'M'
-    lang = 'ru'
+    parameters = {'3': '', 'n': '', 'q': '', 'T': '', 'M': '', 'lang': 'ru'}
 
     for location in locations:
-        url_template = f'https://wttr.in/{
-            location}?{options}{units}&lang={lang}'
-        response = requests.get(url_template, timeout=10)
+        response = requests.get(
+            f'https://wttr.in/{location}', params=parameters, timeout=20)
         response.raise_for_status()
         print(response.text)
 
